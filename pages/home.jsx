@@ -29,17 +29,20 @@ const home = () => {
 
   useEffect(()=>{
    const handleAutoTab = ()=>{
-    if(ScrollRef.current.scrollTop < window.innerHeight && ScrollRef.current.scrollTop >= 0){
-      setScrollTab(0)
-    }else if(ScrollRef.current.scrollTop < window.innerHeight*2 && ScrollRef.current.scrollTop >= window.innerHeight){
-      setScrollTab(1)
-    }else if(ScrollRef.current.scrollTop < window.innerHeight*3 & ScrollRef.current.scrollTop >= window.innerHeight*2){
-      setScrollTab(2)
-    }else if(ScrollRef.current.scrollTop < window.innerHeight*4 & ScrollRef.current.scrollTop >= window.innerHeight*3){
-      setScrollTab(3)
+     const{ top }= ScrollRef.current.getBoundingClientRect();
+     const value = -top/window.innerHeight
+    if( value > 0 && value < .6){
+      setScrollTab(0);
+    }else if(value > 0.6 && value < 1.6){
+      setScrollTab(1);
+    }else if(value > 1.6 && value < 2.6){
+      setScrollTab(2);
+    }else if(value > 2.6 && value < 3.6){
+      setScrollTab(3);
     }
-  }
-      ScrollRef.current.addEventListener("scroll" , handleAutoTab);
+    //console.log(-top / window.innerHeight);
+    }
+      window.addEventListener("scroll" , handleAutoTab);
   },[])
   useEffect(()=>{
     const timer = setTimeout(()=>{
@@ -51,15 +54,16 @@ const home = () => {
     },3000)
     return ()=> clearTimeout(timer)
   },[appTab]);
-  const handleAutoScroll = (i)=>{
-    setScrollTab(i)
-    if(ScrollRef){
-    ScrollRef.current.scrollTo({
-      top : window.innerHeight*i,
-      behavior : "smooth"
-    });
-  }
-  }
+  const handleAutoScroll = (i) => {
+  setScrollTab(i);
+
+  const topValue = ScrollRef.current.offsetTop;
+
+  window.scrollTo({
+    top: topValue + window.innerHeight * i,
+    behavior: "smooth"
+  });
+};
   useEffect(() => {
   const timer2 = setTimeout(() => {
     setPage10(prev => (prev !== 6 ? prev + 1 : 0));
@@ -75,10 +79,11 @@ useEffect(()=>{
   return ()=>clearTimeout(timer3)
 },[creator])
 
+
   return (
     <div className='scrollable-hidden-scrollbar'>
       <div className="page1 h-[92vh] flex justify-center w-full relative ">
-        <div className='w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0.3)] z-10 absolute'></div>
+        <div className='w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.6)] to-[rgba(0,0,0,0.3)] z-10 absolute'></div>
         <video autoPlay loop muted playsInline className='object-cover absolute z-0 h-full w-full' src="https://oneimpressionproductioncrm.s3.amazonaws.com/oneimpressionproductioncrm/1740145375864168"></video>
      <div className='gillb flex flex-col text-center items-center justify-center max-w-[677.2px] h-full z-30 text-white'>
         <h1 className={`${poppins.className} text-[62px] leading-[1.3] font-extrabold mb-[14px] w-max`}>Reinventing Influencer <br />
@@ -226,9 +231,9 @@ connect with the best creators</p>
                 <i className="ri-instagram-line absolute top-[10px] left-[14px] text-2xl font-normal text-white"></i>
                 <img className='w-[240px] h-[290px] object-cover rounded-t-2xl' src={creator.image} alt="" />
                 <span className='block p-[16px_16px_20px] w-[240px] h-[113px]'>
-                  <h1 className='text-[20px] font-bold mb-1.5'>{creator.name}</h1>
-                  <span className='flex  items-center text-[14px] text-[rgba(29,37,45,0.58)] mb-2'><h2 className='text-ellipsis max-w-[96px] overflow-hidden whitespace-nowrap'>{creator.username} </h2> <h2>{creator.followers} followers</h2></span>
-                  <p className='text-[14px] text-[rgb(101,49,255)] flex items-center gap-1 font-medium'><img className='w-[16px] h-[16px]' src="./priceIcon.7d899ac3.svg" alt="" /> Last Deal Price : {creator.lastDealPrice} </p>
+                  <h1 className='text-[20px] font-bold mb-1.6'>{creator.name}</h1>
+                  <span className='flex  items-center text-[14px] text-[rgba(29,37,45,0.68)] mb-2'><h2 className='text-ellipsis max-w-[96px] overflow-hidden whitespace-nowrap'>{creator.username} </h2> <h2>{creator.followers} followers</h2></span>
+                  <p className='text-[14px] text-[rgb(101,49,255)] flex items-center gap-1 font-medium'><img className='w-[16px] h-[16px]' src="./priceIcon.6d899ac3.svg" alt="" /> Last Deal Price : {creator.lastDealPrice} </p>
                 </span>
                 </li>
               ))}
@@ -238,43 +243,43 @@ connect with the best creators</p>
                 <i className="ri-instagram-line absolute top-[10px] left-[14px] text-2xl font-normal text-white"></i>
                 <img className='w-[240px] h-[290px] object-cover rounded-t-2xl' src={creator.image} alt="" />
                 <span className='block p-[16px_16px_20px] w-[240px] h-[113px]'>
-                  <h1 className='text-[20px] font-bold mb-1.5'>{creator.name}</h1>
-                  <span className='flex  items-center text-[14px] text-[rgba(29,37,45,0.58)] mb-2'><h2 className='text-ellipsis max-w-[96px] overflow-hidden whitespace-nowrap'>{creator.username} </h2> <h2>{creator.followers} followers</h2></span>
-                  <p className='text-[14px] text-[rgb(101,49,255)] flex items-center gap-1 font-medium'><img className='w-[16px] h-[16px]' src="./priceIcon.7d899ac3.svg" alt="" /> Last Deal Price : {creator.lastDealPrice} </p>
+                  <h1 className='text-[20px] font-bold mb-1.6'>{creator.name}</h1>
+                  <span className='flex  items-center text-[14px] text-[rgba(29,37,45,0.68)] mb-2'><h2 className='text-ellipsis max-w-[96px] overflow-hidden whitespace-nowrap'>{creator.username} </h2> <h2>{creator.followers} followers</h2></span>
+                  <p className='text-[14px] text-[rgb(101,49,255)] flex items-center gap-1 font-medium'><img className='w-[16px] h-[16px]' src="./priceIcon.6d899ac3.svg" alt="" /> Last Deal Price : {creator.lastDealPrice} </p>
                 </span>
                 </li>
               ))}
             </ul>
        </div>
-       <div className={`page5 grid grid-cols-2 w-screen h-[400vh]`} ref={ScrollRef}>
+       <div className={`page5 grid grid-cols-2 w-screen h-[400vh] relative`} ref={ScrollRef}>
         <div className='bg-black text-white h-screen sticky z-[80] top-0'>
           <ul className='flex justify-center items-center gap-4 mt-[130px]'>
-            <li className={`flex gap-1.5 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===0? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(0);}}>
+            <li className={`flex gap-1.6 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===0? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(0);}}>
               <img className='w-[24px] h-[24px]' src={scrollTab===0 ? "./costActive.bf3332ed.svg" : "./costInactive.66b42569.svg"} alt="" /><h1>Save cost</h1>
             </li>
-            <li className={`flex gap-1.5 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===1? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(1)}}>
+            <li className={`flex gap-1.6 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===1? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(1)}}>
               <img className='w-[24px] h-[24px]' src={scrollTab ===1 ? "./workflowActive.70779927.svg" : "./workflowInactive.c1817266.svg" }alt="" /><h1>Easier workflow</h1>
             </li>
-            <li className={`flex gap-1.5 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===2? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(2)}}>
+            <li className={`flex gap-1.6 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===2? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(2)}}>
               <img className='w-[24px] h-[24px]' src={scrollTab ===2 ? "./fastActive.aae3b042.svg" : "./fast.802a2595.svg"} alt="" /><h1>Faster campaign</h1>
             </li>
-            <li className={`flex gap-1.5 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===3? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(3)}}>
+            <li className={`flex gap-1.6 items-center p-[10px_16px] rounded-3xl text-[14px] cursor-pointer border-[1px] border-white font-semibold ${scrollTab ===3? "text-black bg-white" : "text-white bg-black"}`} onClick={()=>{handleAutoScroll(3)}}>
               <img className='w-[24px] h-[24px]' src={scrollTab === 3 ? "./controlActive.15f2b301.svg" : "./controlInactive.edc54679.svg" } alt="" /><h1>More control</h1>
             </li>
           </ul>
           <div className='w-full flex justify-center items-center mt-20'>
-            <img className='w-[544px] h-[400px]' src="./image4.webp" alt="" />
+            <img className='w-[544px] h-[400px]' src={`./scroll${scrollTab}.webp`} alt="" />
           </div>
         </div>
-        <div className={`overflow-hidden bg-white text-black  relative flex flex-col`} >
+        <div className={` bg-white text-black  relative flex flex-col`} >
  <ul>
   <li className='h-[100vh] flex flex-col justify-center ml-[50px] gap-[34px] '>
             <h1 className='font-bold text-[48px]'>Save up to 30% <br />costs</h1>
             <ul>
-              <li className='text-[20px] flex gap-[21px] justify-start items-center'><img src="./pointerStar.2bf3bd47.svg" alt="" /> No middlemen: Work directly with creators/exclusive agents</li>
-               <li className='text-[20px] flex gap-[21px] justify-start items-center'><img src="./pointerStar.2bf3bd47.svg" alt="" />No hidden charges: Transparent pricing</li>
-               <li className='text-[20px] flex gap-[21px] justify-start items-center'><img src="./pointerStar.2bf3bd47.svg" alt="" />True marketplace: Industry-first pricing guidance</li>
-               <li className='text-[20px] flex gap-[21px] justify-start items-center'><img src="./pointerStar.2bf3bd47.svg" alt="" />Cutting-edge pricing engine: Predicts the best prices</li>
+              <li className='text-[20px] flex gap-[21px] justify-start items-center leading-[44px]'><img src="./pointerStar.2bf3bd47.svg" alt="" /> No middlemen: Work directly with creators/exclusive agents</li>
+               <li className='text-[20px] flex gap-[21px] justify-start items-center leading-[44px]'><img src="./pointerStar.2bf3bd47.svg" alt="" />No hidden charges: Transparent pricing</li>
+               <li className='text-[20px] flex gap-[21px] justify-start items-center leading-[44px]'><img src="./pointerStar.2bf3bd47.svg" alt="" />True marketplace: Industry-first pricing guidance</li>
+               <li className='text-[20px] flex gap-[21px] justify-start items-center leading-[44px]'><img src="./pointerStar.2bf3bd47.svg" alt="" />Cutting-edge pricing engine: Predicts the best prices</li>
             </ul>
 
   </li>
@@ -311,7 +316,7 @@ connect with the best creators</p>
  </ul>
  <div className='absolute h-[400vh] right-10'>
 
- <ul className='sticky top-1/2 -translate-y-1/2 gap-[12px] right-5 flex flex-col items-center justify-center w-max z-50'>
+ <ul className='sticky top-[40px] h-screen gap-[12px] right-5 flex flex-col items-center justify-center w-max z-50'>
   <li className={`h-[20px] w-[20px] rounded-full ${scrollTab ===0 ? "bg-[rgb(29,37,45)]": "bg-[rgba(29,37,45,0.14)]" }`}></li>
   <li className={`h-[20px] w-[20px] rounded-full ${scrollTab ===1 ? "bg-[rgb(29,37,45)]": "bg-[rgba(29,37,45,0.14)]" }`}></li>
   <li className={`h-[20px] w-[20px] rounded-full ${scrollTab ===2 ? "bg-[rgb(29,37,45)]": "bg-[rgba(29,37,45,0.14)]" }`}></li>
@@ -341,11 +346,19 @@ connect with the best creators</p>
              </span>
               <h1 className='text-[20px] text-[#6531ff] mt-[31px] '>Read More <i className="ri-arrow-right-s-line text-2xl align-text-top"></i></h1>
             </span>
-            <img className='w-[136px] h-[267px] font-semibold  border-[rgb(101,49,255)] rounded-3xl border-2' src="https://oneimpressionproductioncrm.s3.ap-south-1.amazonaws.com/famous-website-assets/creatorCollaboration/myMahina.png" alt="" />
+            
+           <span className='block w-fit h-fit relative shrink-0'>
+
+           <img className='w-[136px] h-[267px] font-semibold  border-[rgb(101,49,255)] rounded-3xl border-2' src="https://oneimpressionproductioncrm.s3.ap-south-1.amazonaws.com/famous-website-assets/creatorCollaboration/myMahina.png" alt="" />
+            <span className='absolute top-1/2 bg-white rounded-full h-[36px] w-[36px] block translate-x-1/2 -translate-y-1/2 right-1/2'>
+             <img src="https://www.famous.club/_next/static/media/playerLogo.f9de067c.svg" alt="" />
+             </span>
+            </span>
           </span>
-          <span className='flex w-[534px] h-[360px] p-[20px_40px] gap-2 bg-[rgb(237,234,252)] rounded-3xl items-center'>
-            <span className='flex flex-col items-start h-full w-full'>
+          <span className='flex w-[534px] h-[360px] p-[20px_40px] gap-2 bg-[rgb(237,234,252)] rounded-3xl items-center relative'>
+            <span className='flex flex-col items-start h-full w-full '>
              <img src="./mahinawebp.webp" className='w-[136px] mb-[28px]' alt="" />
+             
              <h1 className='text-[21px] font-bold'>How MyMahina used <br /> Famous to unlock growth?
 </h1>
              <span className='flex justify-between mt-[40px]'>
@@ -360,7 +373,13 @@ connect with the best creators</p>
              </span>
               <h1 className='text-[20px] text-[#6531ff] mt-[31px] '>Read More <i className="ri-arrow-right-s-line text-2xl align-text-top"></i></h1>
             </span>
+            <span className='block w-fit h-fit relative shrink-0'>
+
             <img className='w-[136px] h-[267px] font-semibold  border-[rgb(101,49,255)] rounded-3xl border-2' src="https://oneimpressionproductioncrm.s3.ap-south-1.amazonaws.com/famous-website-assets/creatorCollaboration/cetaphil.png" alt="" />
+            <span className='absolute top-1/2 bg-white rounded-full h-[36px] w-[36px] block translate-x-1/2 -translate-y-1/2 right-1/2'>
+             <img src="https://www.famous.club/_next/static/media/playerLogo.f9de067c.svg" alt="" />
+             </span>
+            </span>
           </span>
 
           
@@ -408,7 +427,8 @@ connect with the best creators</p>
             <div className='relative transition-transform scale-[0.9] duration-500 transform-3d hover:rotate-y-180 w-full h-full  '>
 
             <div className=' backface-hidden absolute flex flex-col items-center w-full h-full bg-white rounded-4xl'>
-              <img className='w-[120px] h-[120px] mb-5 mt-[56px]' src="https://www.famous.club/svg/contentDislike.svg" alt="" /><h2 className='text-[30px] w-[256px] text-center font-bold'>I don't like <br /> the content created</h2>
+              <img className='w-[120px] h-[120px] mb-5 mt-[56px]' src="https://www.famous.club/svg/contentDislike.svg" alt="" />
+              <h2 className='text-[30px] w-[256px] text-center font-bold'>I don't like <br /> the content created</h2>
               </div>
             <div className=' rotate-y-180 backface-hidden absolute flex flex-col items-center justify-center w-full h-full rounded-4xl bg-[rgba(255,255,255,0.6)]'>
               <h2 className='text-[30px] font-bold w-[256px] flex items-center text-center'>No worries! Get upto 100% refund within minutes</h2>
@@ -456,28 +476,28 @@ connect with the best creators</p>
           <span className='block h-[400px] w-[606px] bg-white  pt-[36px] rounded-3xl'>
             <div className="data flex flex-col gap-2 mb-5 pl-[36px]">
               <h1 className='text-[36px] font-medium'>Deliverables</h1>
-              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.58)]'>Select content type from a list of over 100 options</small>
+              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.68)]'>Select content type from a list of over 100 options</small>
             </div>
             <img src="https://www.famous.club/_next/static/media/deliverablePills.0c0e9d65.svg" alt="" />
           </span>
           <span className='block h-[400px] w-[606px] bg-white  pt-[36px] rounded-3xl'>
             <div className="data flex flex-col gap-2 mb-5 pl-[36px]">
               <h1 className='text-[36px] font-medium'>Content licensing</h1>
-              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.58)]'>Buy content rights add-ons with the content</small>
+              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.68)]'>Buy content rights add-ons with the content</small>
             </div>
             <img src="https://www.famous.club/_next/static/media/contentLicensing.36625d50.svg" alt="" />
           </span>
           <span className='block h-[400px] w-[606px] bg-white  pt-[36px] rounded-3xl'>
             <div className="data flex flex-col gap-2 mb-5 pl-[36px]">
               <h1 className='text-[36px] font-medium'>Exclusive deals</h1>
-              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.58)]'>Get creators to be exclusive for your category</small>
+              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.68)]'>Get creators to be exclusive for your category</small>
             </div>
             <img src="https://www.famous.club/_next/static/media/exclusiveDetails.b5c1b748.svg" alt="" />
           </span>
           <span className='block h-[400px] w-[606px] bg-white  pt-[36px] rounded-3xl'>
             <div className="data flex flex-col gap-2 mb-5 pl-[36px]">
               <h1 className='text-[36px] font-medium'>Advanced settings</h1>
-              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.58)]'>Add upto 15 custom requirements in a jiffy!</small>
+              <small className='text-[20px] font-normal text-[rgba(29,37,45,0.68)]'>Add upto 15 custom requirements in a jiffy!</small>
             </div>
             <img src="https://www.famous.club/_next/static/media/advancedSettings.455e6dd6.svg" alt="" />
           </span>
@@ -498,7 +518,7 @@ connect with the best creators</p>
   <span className='block w-full max-h-617px shrink-0'>
     <h1 className="text-[48px] font-semibold mb-[36px]">{i.quote}</h1>
     <h2 className='text-[28px] font-semibold mb-[10px]'>{i.name}</h2>
-    <small className='text-[20px] text-[rgba(29,37,45,0.576)]'> {i.position} </small>
+    <small className='text-[20px] text-[rgba(29,37,45,0.676)]'> {i.position} </small>
   </span>
 ))}
   </div>
@@ -554,7 +574,7 @@ Questions</h1>
         <div className='flex max-w-[1260px] gap-[24px] w-full py-[30px] text-white items-center justify-start relative'>
         <h2 className='text-[16px]'>Subscribe to our newsletter </h2>
         <input className='py-[20px] rounded-4xl px-6 w-[532px] bg-[rgb(72,72,72)] text-[16px] outline-0 border-0 max-h-[60px]' type="text" placeholder='Enter your email'/>
-        <button className='bg-white text-black p-[20px_43px] ml-1.5 rounded-4xl text-[16px] max-h-[60px] font-semibold'>Subscibe</button>
+        <button className='bg-white text-black p-[20px_43px] ml-1.6 rounded-4xl text-[16px] max-h-[60px] font-semibold'>Subscibe</button>
         <img className='w-[224px] h-[133px] absolute bottom-[5px] right-0' src="https://www.famous.club/svg/newsletter.svg" alt="" />
         </div>
        </div>
