@@ -5,7 +5,6 @@ html{
 }
 
 html, body {
-  height: 100%;
   margin: 0;
   overflow-y: auto;                /* Allow scrolling */
   scrollbar-width: none;          /* Firefox */
@@ -30,7 +29,7 @@ body::-webkit-scrollbar {
 }
 
 .marquee {
-  animation: scroll 40s linear infinite;
+  animation: scroll 60s linear infinite;
   animation-direction: normal;
 }
 
@@ -39,6 +38,26 @@ body::-webkit-scrollbar {
     transform: translateX(-100%);
   }
 }
-.foot ul li:first-of-type{
-  
+.foot {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+
+}
+.foot ul li{
+  padding-bottom: 14px;
+  text-transform: capitalize;
+}
+.foot ul li:first-of-type , .foot ul:first-of-type li:nth-child(4){
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 0px;
+}
+.reset{
+  animation: none;
+  transition : all ease .3s;
+  transform:translateX(0%);
+  opacity: 0;
 }

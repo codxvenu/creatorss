@@ -6,12 +6,13 @@ const home = () => {
   const [active,setActive] = useState(1);
   const[activeVedio , setActiveVedio] = useState("");
   const[tab,setTab] = useState(1);
-  const[creator,setCreator] = useState(1);
+  const[creator,setCreator] = useState("celebrity");
   const[scrollTab,setScrollTab] = useState(0);
   const[Page,setPage] = useState(true);
   const[appTab,setAppTab] = useState(0);
   const[page10,setPage10] = useState(0);
   const[qna,setQna] = useState(0);
+  const[reset,setReset] = useState(false);
   useEffect(()=>{
     if(active === 1){
       setActiveVedio("https://oneimpressionproductioncrm.s3.ap-south-1.amazonaws.com/famous-website-assets/relevantCreators/Find-Creators.mp4")
@@ -66,6 +67,13 @@ const home = () => {
   return () => clearTimeout(timer2);
 }, [page10]);
 
+useEffect(()=>{
+  setReset(true);
+  const timer3 = setTimeout(()=>{
+    setReset(false);
+  },50)
+  return ()=>clearTimeout(timer3)
+},[creator])
 
   return (
     <div className='scrollable-hidden-scrollbar'>
@@ -102,7 +110,7 @@ connect with the best creators</p>
             <img width={14} height={14} src="./star_round.svg" alt="" />
         </li>
       </ul>
-      <div className='relative '>
+      <div className='relative overflow-x-hidden'>
          
      
 <div className='absolute top-1/2 -translate-y-1/2 w-full h-[103px] flex justify-between z-50'>
@@ -111,7 +119,7 @@ connect with the best creators</p>
 </div>
 
       <p className={`${poppins.className} text-[12px] leading-[16px] my-[60px_46px] text-center font-bold text-black`}>TRUSTED BY 1000+ BRANDS</p>
-      <ul className='flex gap-[50px] pb-20 marquee  whitespace-nowrap '>
+      <ul className='flex gap-[50px] pb-20 hover:transition-none marquee  whitespace-nowrap '>
         {Image_urls.map((url,index)=>(
         
             <li className='shrink-0' key={index}><img className='h-[30px] w-auto' src={url.link} alt="" /></li>
@@ -119,11 +127,11 @@ connect with the best creators</p>
       </ul>
 
        </div>
-       <div className="page2 bg-[rgb(237,234,252)] h-[1060px] pt-[140px] mb-[280px] grid justify-items-center">
+       <div className="page2 bg-[rgb(237,234,252)] h-[1160px] pt-[140px] mb-[280px] grid justify-items-center">
         <h1 className='text-[64px] font-bold mb-[36px] text-center'>
           Get Famous in just 5 steps
         </h1>
-        <ul className='flex justify-center items-center text-[16px] font-bold gap-[12px] cursor-pointer'>
+        <ul className={`${poppins.className} flex justify-center items-center text-[16px] font-bold gap-[12px] cursor-pointer`}>
           <li className='p-[14px_26px] mb-[36px]  rounded-4xl' style={{background : active === 1 ? "rgba(101,49,255,0.22)" : "white"}} onClick={()=>setActive(1)}>
             <h1>1. Find creators</h1>
           </li>
@@ -145,10 +153,10 @@ connect with the best creators</p>
         <video loop autoPlay muted className='rounded-[30px] object-cover w-full h-full' src={activeVedio}></video>
        </div>
        </div>
-       <div className="page3 py-[140px] bg-black relative">
+       <div className="page3 py-[140px] bg-black relative overflow-x-hidden">
         <h1 className='text-[72px] mb-[60px] font-bold text-white text-center' ><span className='text-[#caff30]'>Industry-first 
           </span> Marketplace <br />features</h1>
-          <div className="tab_shift absolute top-[55%] w-[65.2%] h-fit flex justify-between left-[17%] z-50">
+          <div className="tab_shift absolute top-[50%] w-[64.4%] h-fit flex justify-between left-[17%] z-50">
             <span className={`${tab===0? "opacity-0" : "opacity-100"} flex items-center justify-center bg-white text-black w-[48px] h-[48px] text-[28px] rounded-full text-center transition-opacity duration-200 ease-in-out`} onClick={()=>{tab !== 0 ? setTab(tab-1) : ""}}><i className="ri-arrow-left-s-line"></i></span>
             <span className={`${tab===3? "opacity-0" : "opacity-100"} flex items-center justify-center bg-white text-black w-[48px] h-[48px] text-[28px] rounded-full text-center transition-opacity duration-200 ease-in-out`} onClick={()=>{tab < 3 ? setTab(tab+1) : ""}}><i className="ri-arrow-right-s-line"></i></span>
           </div>
@@ -185,36 +193,48 @@ connect with the best creators</p>
           
           </ul>
        </div>
-       <div className={`pag4 grid justify-items-center py-[140px] ${poppins.className} bg-[rgb(202,255,48)]`}>
+       <div className={`pag4 grid justify-items-center py-[140px] ${poppins.className} bg-[rgb(202,255,48)] overflow-x-hidden`}>
         <h1 className='text-[72px] mb-[40px] font-bold text-black text-center'>Work with the <span className='text-[rgb(101,49,255)]'>best creators
           </span> <br />from the industry</h1>
           <ul className='flex items-center justify-center gap-3 mb-[60px]'>
-            <li className={`${creator === 1? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(1)}>
+            <li className={`${creator === "celebrity"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("celebrity")}>
             Celebrity
             </li>
-            <li className={`${creator === 2? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(2)}>
+            <li className={`${creator === "comedy"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("comedy")}>
             Comedy
             </li>
-            <li className={`${creator === 3? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(3)}>
+            <li className={`${creator === "entertainment"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("entertainment")}>
             Entertainment
             </li>
-            <li className={`${creator === 4? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(4)}>
+            <li className={`${creator === "infotainment"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("infotainment")}>
             Infotainment
             </li>
-            <li className={`${creator === 5? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(5)}>
+            <li className={`${creator === "lifestyle"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("lifestyle")}>
             Lifestyle
             </li>
-            <li className={`${creator === 6? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(6)}>
+            <li className={`${creator === "technology"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("technology")}>
             Technology
             </li>
-            <li className={`${creator === 7? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator(7)}>
+            <li className={`${creator === "fitness"? "text-white bg-black" : "text-black bg-white"} p-[10px_16px] cursor-pointer rounded-4xl transition-all duration-300`} onClick={()=>setCreator("fitness")}>
             Fitness
             </li>
             </ul>
-            <ul className='flex justify-center items-center overflow-x-hidden h-max marquee'>
-              {creators.map((creator)=>(
+            <ul className={`flex justify-center items-center overflow-x-hidden h-max ${reset && "reset" } hover:reset marquee`}>
+              {creators.filter((ctor)=>(ctor.category === creator)).map((creator)=>(
 
               <li className='grid justify-items-center items-center w-[240px] ml-[30px] bg-white rounded-2xl min-h-[142px] relative' key={creator.username}>
+                <i className="ri-instagram-line absolute top-[10px] left-[14px] text-2xl font-normal text-white"></i>
+                <img className='w-[240px] h-[290px] object-cover rounded-t-2xl' src={creator.image} alt="" />
+                <span className='block p-[16px_16px_20px] w-[240px] h-[113px]'>
+                  <h1 className='text-[20px] font-bold mb-1.5'>{creator.name}</h1>
+                  <span className='flex  items-center text-[14px] text-[rgba(29,37,45,0.58)] mb-2'><h2 className='text-ellipsis max-w-[96px] overflow-hidden whitespace-nowrap'>{creator.username} </h2> <h2>{creator.followers} followers</h2></span>
+                  <p className='text-[14px] text-[rgb(101,49,255)] flex items-center gap-1 font-medium'><img className='w-[16px] h-[16px]' src="./priceIcon.7d899ac3.svg" alt="" /> Last Deal Price : {creator.lastDealPrice} </p>
+                </span>
+                </li>
+              ))}
+              {creators.filter((ctor)=>(ctor.category === creator)).map((creator)=>(
+
+              <li className='grid justify-items-center items-center w-[240px] ml-[30px] hover:reset bg-white rounded-2xl min-h-[142px] relative' key={creator.username}>
                 <i className="ri-instagram-line absolute top-[10px] left-[14px] text-2xl font-normal text-white"></i>
                 <img className='w-[240px] h-[290px] object-cover rounded-t-2xl' src={creator.image} alt="" />
                 <span className='block p-[16px_16px_20px] w-[240px] h-[113px]'>

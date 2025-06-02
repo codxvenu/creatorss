@@ -3,12 +3,12 @@ import { lexend } from './_app'
 
 const footer = () => {
   return (
-    <div className={`${lexend.className} w-full bg-black text-white pt-[40px] `}>
-        <div className='max-w-[1400px] grid grid-cols-2 mx-auto w-full'>
+    <div className={`${lexend.className} w-full bg-black text-white pt-[40px]`}>
+        <div className='max-w-[1400px] grid grid-cols-2 mx-auto w-full font-normal border-b-[1px] border-b-[#767676]'>
 
       <div className='pb-[40px]'>
       <h1 className='text-[56px] font-semibold'>Famous</h1>
-        <p className='text-[14px]'>A product by One Impression</p>
+        <p className='text-[14px]'>A product by <span className='font-bold'>One</span> Impression</p>
         <span>
             <h2 className='text-[12px] text-[rgba(255,255,255,0.58)] my-[40px_18px]'>Download our creator App</h2>
             <img className='h-[40px] w-[134px] mb-[16px]' src="https://www.famous.club/svg/appstore.svg" alt="" />
@@ -29,10 +29,10 @@ const footer = () => {
             <ul>
                 <li>For Creators</li>
                 <li>IOS creator app</li>
-                <li>fAMOUS</li>
+                <li>Android creator app</li>
+                <li className='mt-6'>fAMOUS</li>
                 <li>Pricing</li>
                 <li>Case studies</li>
-                <li></li>
             </ul>
             <ul>
                 <li>COMPANY</li>
@@ -53,6 +53,10 @@ const footer = () => {
             </ul>
         </div>
 
+        </div>
+        <div className='max-w-[1400px] mx-auto grid gap-4 py-8'>
+          Other products by One Impression
+          <img src="./amplifyLogo.e921cfc3.svg" alt="" />
         </div>
     </div>
   )
