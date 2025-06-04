@@ -54,9 +54,17 @@ body::-webkit-scrollbar {
   grid-template-columns: repeat(3,1fr);
 
 }
-.foot ul li{
+.foot-small{
+  display: grid;
+}
+.foot ul li,.foot-small li{
   padding-bottom: 14px;
   text-transform: capitalize;
+}
+.foot-small ul{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.21);
+  padding-top: 20px;
+  font-size: 14px;
 }
 .foot ul li:first-of-type , .foot ul:first-of-type li:nth-child(4){
   text-transform: uppercase;
@@ -66,9 +74,32 @@ body::-webkit-scrollbar {
   margin-bottom: 16px;
   padding-bottom: 0px;
 }
+.foot-small ul li:first-of-type{
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.foot-small span li{
+  color: white !important;
+}
 .reset{
   animation: none;
   transition : all ease .3s;
   transform:translateX(0%);
   opacity: 0;
+}
+.force{
+  transform: translateX(0px) !important;
+}
+@media (max-width: 1024px) {
+  .lg-marquee {
+    animation: scroll 60s linear infinite;
+  }
+  .foot{
+    display: none;
+  }
 }

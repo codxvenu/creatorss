@@ -996,5 +996,147 @@ const mediaImages = [
     url: "https://oneimpressionproductioncrm.s3.ap-south-1.amazonaws.com/One_Impression_Landing/mediafeatured/hindu.svg"
   }
 ];
+const DataPage2 = [
+    {
+      type: "image",
+      src: "./image0.webp",
+      title: "CREATOR RANKING ALGORITHM",
+      heading: "See the best creators on top",
+      description:
+        "'Famous recommended’ is a pioneering feed ranking algorithm which uses 70+ creator data metrics to show the most relevant creators on top",
+    },
+    {
+      type: "video",
+      src: "https://oneimpressionproductioncrm.s3.ap-south-1.amazonaws.com/famous-website-assets/industryMarketplace/Know-the-Best-Price-of-Creators.mp4",
+      title: "PRICE PREDICTION ENGINE",
+      heading: "Know the best prices of creators",
+      description:
+        "Our Pricing Wizard uses 20+ data inputs like past campaign performance, profile growth etc to predict the best prices of 1Mn+ creators",
+    },
+    {
+      type: "image",
+      src: "./image2.webp",
+      title: "CHAT/CALL CREATORS DIRECTLY",
+      heading: "1:1 Connect with creators",
+      description:
+        "Famous allows you to connect with creators directly via our chat & calling features. Creators use the Famous Creator App to seamlessly connect with you",
+    },
+    {
+      type: "image",
+      src: "./image3.webp",
+      title: "AUDIENCE INSIGHTS",
+      heading: "Know the followers of creators",
+      description:
+        "Check the demographic details like credibility score, age, gender & location of the creators’ follower base to understand the real audience of your campaigns",
+    }
+  ]
+  const DataPage5  = [
+  {
+    id: 0,
+    label: "Save cost",
+    activeIcon: "./costActive.bf3332ed.svg",
+    inactiveIcon: "./costInactive.66b42569.svg",
+  },
+  {
+    id: 1,
+    label: "Easier workflow",
+    activeIcon: "./workflowActive.70779927.svg",
+    inactiveIcon: "./workflowInactive.c1817266.svg",
+  },
+  {
+    id: 2,
+    label: "Faster campaign",
+    activeIcon: "./fastActive.aae3b042.svg",
+    inactiveIcon: "./fast.802a2595.svg",
+  },
+  {
+    id: 3,
+    label: "More control",
+    activeIcon: "./controlActive.15f2b301.svg",
+    inactiveIcon: "./controlInactive.edc54679.svg",
+  }
+]; 
+const benefitsData = [
+  {
+    title: ["Save up to 30%", "costs"],
+    benefits: [
+      "No middlemen: Work directly with creators/exclusive agents",
+      "No hidden charges: Transparent pricing",
+      "True marketplace: Industry-first pricing guidance",
+      "Cutting-edge pricing engine: Predicts the best prices"
+    ]
+  },
+  {
+    title: ["Dont scale teams,", "scale campaigns"],
+    benefits: [
+      "Chasing creators on WhatsApp? 1:1 Call/chat with creators!",
+      "Creating excel sheets manually? Download PDFs easily!",
+      "Following up with Finance teams? Pay online in a click!",
+      "Tracking content performance on IG? Track on Famous!"
+    ]
+  },
+  {
+    title: ["Get Famous", "faster"],
+    benefits: [
+      "Discover best creator prices upfront",
+      "Fill custom campaign briefs in seconds",
+      "Creators accept campaigns within 30 minutes",
+      "Pay and go live with your campaign in 24 hours"
+    ]
+  },
+  {
+    title: ["Get full control of", "your campaign"],
+    benefits: [
+      "No chinese whispers: Direct call/chat with creators",
+      "Easy-to-fill campaign briefs with 100+ deliverable options",
+      "Negotiate with creators to get the best deals",
+      "Super easy to give feedbacks on content scripts & videos"
+    ]
+  }
+];
+const cards = [
+  {
+    icon: "/svg/contentDislike.svg",
+    frontText: ["I don't like", "the content created"],
+    backText: "No worries! Get upto 100% refund within minutes"
+  },
+  {
+    icon: "/svg/notResponding.svg",
+    frontText: ["Creator isn't", "responding to my calls"],
+    backText: "No worries! Get upto 100% refund within minutes"
+  },
+  {
+    icon: "/svg/goLiveDelayed.svg",
+    frontText: ["Creator has", "delayed the planned go live date"],
+    backText: "No worries! Get upto 100% refund within minutes"
+  },
+  {
+    icon: "/svg/backedOut.svg",
+    frontText: ["Creator","backed out at the last minute"],
+    backText: "No worries! Get upto 100% refund within minutes"
+  }
+];
+const cardsData = [
+  {
+    title: "Deliverables",
+    description: "Select content type from a list of over 100 options",
+    image: "https://www.famous.club/_next/static/media/deliverablePills.0c0e9d65.svg"
+  },
+  {
+    title: "Content licensing",
+    description: "Buy content rights add-ons with the content",
+    image: "https://www.famous.club/_next/static/media/contentLicensing.36625d50.svg"
+  },
+  {
+    title: "Exclusive deals",
+    description: "Get creators to be exclusive for your category",
+    image: "https://www.famous.club/_next/static/media/exclusiveDetails.b5c1b748.svg"
+  },
+  {
+    title: "Advanced settings",
+    description: "Add upto 15 custom requirements in a jiffy!",
+    image: "https://www.famous.club/_next/static/media/advancedSettings.455e6dd6.svg"
+  }
+];
 
-module.exports = {Image_urls,creators,testimonials,testimonial,faqData,mediaImages};
+module.exports = {Image_urls,creators,testimonials,testimonial,faqData,mediaImages,DataPage2,DataPage5,benefitsData,cards,cardsData};
