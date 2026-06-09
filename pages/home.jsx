@@ -473,7 +473,7 @@ connect with the best creators</p>
            <video src="https://oneimpressionproductioncrm.s3.amazonaws.com/oneimpressionproductioncrm/1741677178878316" autoPlay loop playsInline muted className='w-full h-full'/>
         </div>
         </div>
-       </div>}
+       </div>
        <div className={`${lexend.className} page8 lg:min-h-[994px] lg:py-[130px] py-[30px] flex flex-col items-center bg-[rgb(202,255,48)]`}>
         <h1 className={`${poppins.className} font-extrabold lg:text-[48px] text-[32px] text-center `}>Famous Guarantee: <span className='text-[rgb(101,49,255)]'>Easy Cancellations!</span></h1>
         <p className='px-[28px] lg:text-[24px] text-[16px] leading-[34px] lg:mb-[60px] mb-[20px] font-medium lg:text-start text-center mt-2'>Our standard cancellation policy keeps your money 100% safe, cancel <br /> whenever to get a refund upto 100% of the campaign budget</p>
