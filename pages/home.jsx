@@ -118,7 +118,7 @@ connect with the best creators</p>
 <button className='font-bold lg:p-[18px_34px] p-[12px_28px] text-black bg-white rounded-4xl lg:text-[20px] text-[16px]'>Unlock your free trial</button>
      </div>
       </div>
-      {/* <div className='overflow-hidden'>
+      <div className='overflow-hidden'>
 
        <ul className={`${lexend.className} bg-black text-white flex text-[20px] gap-[28px] py-[23px] items-center justify-center lg:overflow-hidden overflow-scroll max-[1024px]:w-max max-[1024px]:marquee`}>
         <li className='flex gap-[28px]'>
@@ -298,7 +298,7 @@ connect with the best creators</p>
               ))}
             </ul>
             
-       </div>*/} 
+       </div> 
         <div className={`page5 grid lg:grid-cols-2  lg:h-[400vh] h-max relative`} ref={ScrollRef}>
         <div className='bg-black text-white lg:h-screen lg:sticky z-[80] top-0  max-[1024px]:w-screen overflow-hidden'>
           <div className='overflow-scroll lg:w-full scrollable-hidden-scrollbar px-3'>
@@ -369,7 +369,7 @@ connect with the best creators</p>
  </div>
  </div>
        </div>
-       {/*  <div className={`${lexend.className} page6 grid justify-items-center lg:my-[130px] my-[40px] overflow-hidden`}>
+       <div className={`${lexend.className} page6 grid justify-items-center lg:my-[130px] my-[40px] overflow-hidden`}>
         <h1 className={`${poppins.className} lg:text-[64px] text-[35px] font-bold  lg:ml-[-130px] mb-[60px] max-[1024px]:px-4`}>
           Navigating creator collaborations <br /> to <span className=' text-[rgb(101,49,255)]'>achieve growth</span>
         </h1>
@@ -473,7 +473,7 @@ connect with the best creators</p>
            <video src="https://oneimpressionproductioncrm.s3.amazonaws.com/oneimpressionproductioncrm/1741677178878316" autoPlay loop playsInline muted className='w-full h-full'/>
         </div>
         </div>
-       </div>*/}
+       </div>}
        <div className={`${lexend.className} page8 lg:min-h-[994px] lg:py-[130px] py-[30px] flex flex-col items-center bg-[rgb(202,255,48)]`}>
         <h1 className={`${poppins.className} font-extrabold lg:text-[48px] text-[32px] text-center `}>Famous Guarantee: <span className='text-[rgb(101,49,255)]'>Easy Cancellations!</span></h1>
         <p className='px-[28px] lg:text-[24px] text-[16px] leading-[34px] lg:mb-[60px] mb-[20px] font-medium lg:text-start text-center mt-2'>Our standard cancellation policy keeps your money 100% safe, cancel <br /> whenever to get a refund upto 100% of the campaign budget</p>
